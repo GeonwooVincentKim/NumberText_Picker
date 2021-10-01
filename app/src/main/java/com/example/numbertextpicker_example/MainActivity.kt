@@ -14,9 +14,14 @@ class MainActivity : AppCompatActivity() {
     private val scrollNumberPicker: NumberPicker by lazy {
         findViewById<NumberPicker>(R.id.scrollNumberPicker)
             .apply {
-                minValue = 5
-                maxValue = 10
+                minValue = 0
+                maxValue = 6
+                displayedValues = places
             }
+    }
+
+    private val places: Array<String> by lazy{
+        resources.getStringArray(R.array.locations)
     }
 
     @SuppressLint("SetTextI18n")
@@ -24,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        showResultText.text = "User's Number : ${scrollNumberPicker.value}"
+        showResultText.text = "User's Location : ${scrollNumberPicker.value}"
         scrollNumberPicker.setOnValueChangedListener { numberPicker, oldValue, newValue ->
-            showResultText.text = "Selected : $newValue"
+            showResultText.text = "User's Location : ${places[newValue]}"
         }
     }
 }
