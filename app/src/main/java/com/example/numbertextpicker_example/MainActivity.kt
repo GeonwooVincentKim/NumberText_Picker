@@ -12,7 +12,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val scrollNumberPicker: NumberPicker by lazy {
-//        findViewById(R.id.scrollNumberPicker)
         findViewById<NumberPicker>(R.id.scrollNumberPicker)
             .apply {
                 minValue = 5
@@ -25,9 +24,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        showResultText
+        showResultText.text = "User's Number : ${scrollNumberPicker.value}"
         scrollNumberPicker.setOnValueChangedListener { numberPicker, oldValue, newValue ->
-            showResultText.text = "Selected $newValue"
+            showResultText.text = "Selected : $newValue"
         }
     }
 }
