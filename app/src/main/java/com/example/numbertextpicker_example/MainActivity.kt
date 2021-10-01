@@ -11,12 +11,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val scrollNumberPicker: NumberPicker by lazy {
-        findViewById(R.id.scrollNumberPicker)
-//        findViewById<NumberPicker>(R.id.scrollNumberPicker)
-//            .apply{
-//                minValue = 5
-//                maxValue = 10
-//            }
+//        findViewById(R.id.scrollNumberPicker)
+        findViewById<NumberPicker>(R.id.scrollNumberPicker)
+            .apply{
+                minValue = 5
+                maxValue = 10
+            }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         showResultText
-        scrollNumberPicker.minValue = 5
-        scrollNumberPicker.maxValue = 10
+        scrollNumberPicker
     }
 }
