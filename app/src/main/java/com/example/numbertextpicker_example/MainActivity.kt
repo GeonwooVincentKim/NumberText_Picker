@@ -1,5 +1,6 @@
 package com.example.numbertextpicker_example
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.NumberPicker
@@ -13,17 +14,20 @@ class MainActivity : AppCompatActivity() {
     private val scrollNumberPicker: NumberPicker by lazy {
 //        findViewById(R.id.scrollNumberPicker)
         findViewById<NumberPicker>(R.id.scrollNumberPicker)
-            .apply{
+            .apply {
                 minValue = 5
                 maxValue = 10
             }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         showResultText
-        scrollNumberPicker
+        scrollNumberPicker.setOnValueChangedListener { numberPicker, oldValue, newValue ->
+            showResultText.text = "Selected $newValue"
+        }
     }
 }
